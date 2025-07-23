@@ -6,8 +6,11 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { MessageCircle, Mail, Phone, MapPin } from "lucide-react";
+import { useLanguage } from "@/stores/useLanguage"
+
 
 export const Contact = () => {
+  const { lang } = useLanguage()
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 

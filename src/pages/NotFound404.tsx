@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Home, ArrowLeft } from "lucide-react";
+import { useLanguage } from "@/stores/useLanguage"
+
 
 export const NotFound404 = () => {
+  const { lang } = useLanguage()
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">
       <div className="text-center max-w-md mx-auto px-4">

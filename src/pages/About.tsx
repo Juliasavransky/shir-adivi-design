@@ -1,5 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useLanguage } from "@/stores/useLanguage"
+
 
 export const About = () => {
   const metrics = [
@@ -8,7 +10,7 @@ export const About = () => {
     { number: "150+", label: "Brands Worked With" },
     { number: "95%", label: "Client Satisfaction" },
   ];
-
+  
   const skills = [
     "Brand Identity Design",
     "Logo Design",
@@ -19,7 +21,8 @@ export const About = () => {
     "Art Direction",
     "Client Consultation",
   ];
-
+  
+  const { lang } = useLanguage()
   return (
     <div className="min-h-screen py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
