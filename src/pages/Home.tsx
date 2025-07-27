@@ -1,70 +1,87 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
 import { ArrowRight, Phone } from 'lucide-react';
 import heroPortrait from '@/assets/images/Portrait.jpg';
-import { useLanguage } from "@/stores/useLanguage"
-
+import { useLanguage } from '@/stores/useLanguage';
+import { BrandMarquee } from './../components/BrandMarquee';
+import bgUrl from '@/assets/svg/bg.svg';
 
 export const Home = () => {
-  const brandLogos = [
-    'stripe',
-    'HSBC',
-    'Upwork',
-    'Brand D',
-    'Brand E',
-    'Brand F',
-  ];
-  const { lang } = useLanguage()
-
+  const { lang } = useLanguage();
   return (
     <div className='min-h-screen pt-[84px]'>
+      {/* רקע סטטי */}
+
+      <div
+        className='absolute inset-0 z-0 bg-cover bg-center'
+        style={{ backgroundImage: `url(${bgUrl})` }}
+      />
+
       {/* Hero Section */}
       <section className='relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-sage/10 to-non-photo-blue/10'>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center'>
           {/* Left Column - 55% */}
-          <div className='lg:col-span-7 space-y-8'>
-            <h1 className='text-5xl md:text-7xl font-extrabold leading-tight text-magenta-dye'>
-              Where leading brands begin
-            </h1>
+          <div
+            className='
+    relative lg:col-span-6 flex flex-col justify-center space-y-6
+     p-20 shadow-lg
+    bg-white/10 backdrop-blur-md
+    rounded-[40%_70%_60%_40%_/_70%_40%_60%_40%]
+    clip-path-[polygon(
+      67%_3%,87%_15%,96%_36%,96%_66%,
+      82%_89%,60%_98%,33%_97%,12%_85%,
+      3%_64%,4%_33%,18%_13%,41%_3%)
+    ]
+  '
+          >
+            <div className='lg:col-span-7 space-y-8'>
+              <h1 className='text-5xl md:text-7xl font-extrabold leading-tight text-magenta-dye'>
+                Where products become brands{' '}
+              </h1>
 
-            <p className='text-xl md:text-2xl text-english-violet/80 max-w-lg leading-relaxed'>
-              Decades of design, strategy, and visual storytelling that actually
-              delivers. Bold ideas take shape through proven expertise.
-            </p>
+              <p className='text-xl md:text-2xl text-english-violet/80 max-w-lg leading-relaxed'>
+                A design studio that shines a light on what you offer so
+                customers can’t look away.
+              </p>
 
-            <div className='flex flex-col sm:flex-row gap-4'>
-              <Button
-                asChild
-                size='lg'
-                className='bg-razzmatazz hover:bg-razzmatazz/90 text-white group rounded-full px-8'
-              >
-                <Link to='/portfolio'>
-                  View Portfolio
-                  <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant='outline'
-                size='lg'
-                className='border-moonstone text-moonstone hover:bg-moonstone hover:text-white rounded-full px-8'
-              >
-                <a
-                  href='https://wa.me/1234567890'
-                  target='_blank'
-                  rel='noopener noreferrer'
+              <div className='flex flex-col sm:flex-row gap-4'>
+                <Button
+                  asChild
+                  size='lg'
+                  className='bg-razzmatazz hover:bg-razzmatazz/90 text-white group rounded-full px-8'
                 >
-                  <Phone className='mr-2 h-4 w-4' />
-                  Book a Call
-                </a>
-              </Button>
+                  <Link to='/portfolio'>
+                    View Portfolio
+                    <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  variant='outline'
+                  size='lg'
+                  className='border-moonstone text-moonstone hover:bg-moonstone hover:text-white rounded-full px-8'
+                >
+                  <a
+                    href='https://wa.me/1234567890'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
+                    <Phone className='mr-2 h-4 w-4' />
+                    Book a Call
+                  </a>
+                </Button>
+              </div>
             </div>
           </div>
 
           {/* Right Column - 45% */}
           <div className='lg:col-span-5 relative'>
-            <div className='relative w-full h-96 md:h-[500px] rounded-3xl overflow-hidden'>
+            <div
+              className='relative w-full h-96 md:h-[500px] overflow-hidden shadow-lg
+            mask-type-alpha
+              rounded-[40%_70%_60%_40%_/_70%_40%_60%_40%]
+               '
+            >
               <img
                 src={heroPortrait}
                 alt='Shir Adivi - Graphic Designer'
@@ -76,129 +93,109 @@ export const Home = () => {
         </div>
       </section>
 
-      {/* Brand Logos Marquee */}
-      <section className='bg-gradient-to-r from-sage/20 to-moss-green/20 py-8 overflow-hidden'>
-        <div className='flex animate-marquee whitespace-nowrap'>
-          {[...brandLogos, ...brandLogos].map((brand, index) => (
-            <div
-              key={index}
-              className='inline-flex items-center justify-center mx-8 min-w-32'
-            >
-              <span className='text-lg font-medium text-english-violet/70'>
-                {brand}
-              </span>
-            </div>
-          ))}
-        </div>
-      </section>
+      <BrandMarquee />
 
       {/* Torn Edge Divider */}
       <div className='h-16 bg-gradient-to-r from-sage to-moss-green relative'>
         <div className='absolute inset-0 bg-gradient-to-r from-sage to-moss-green'></div>
       </div>
 
-      {/* Mentorship & Business Guidance Section */}
-      <section className='py-20 bg-white relative'>
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-          <div className='grid grid-cols-1 lg:grid-cols-5 gap-12'>
-            {/* Left Column - 60% */}
-            <div className='lg:col-span-3 space-y-8'>
-              <h2 className='text-4xl font-bold text-magenta-haze mb-8'>
-                Transform Your Creative Journey
-              </h2>
+      <section className='px-4 py-16 bg-white'>
+        <div
+          className='
+          mx-auto max-w-6xl
+          grid auto-rows-[1fr] gap-6
+          sm:grid-cols-2 md:grid-cols-4
+        '
+        >
+          {/* 1 — Purple title card */}
+          <article className='col-span-1 row-span-1 flex items-center justify-center rounded-2xl p-6 font-bold text-white bg-[#5C2D91]'>
+            PURPLE
+            <br />
+            SPACE
+          </article>
 
-              {/* Testimonial Carousel Placeholder */}
-              <div className='space-y-6'>
-                <Card className='p-8 bg-sage/10 border-sage/30'>
-                  <div className='flex items-start gap-4'>
-                    <div className='w-16 h-16 bg-sage rounded-full flex items-center justify-center flex-shrink-0'>
-                      <span className='text-white font-bold'>JD</span>
-                    </div>
-                    <div>
-                      <p className='text-lg italic text-english-violet mb-4'>
-                        "Shir's mentorship transformed my approach to design.
-                        Her strategic insights helped me land my dream job at a
-                        leading agency."
-                      </p>
-                      <p className='font-semibold text-magenta-haze'>
-                        — Jane Designer
-                      </p>
-                    </div>
-                  </div>
-                </Card>
+          {/* 2 — Abstract shape */}
+          <div
+            className='
+            aspect-square rounded-2xl shadow-sm
+            bg-cover bg-center
+          '
+            style={{ backgroundImage: `url(${bgUrl})` }}
+          />
 
-                <Card className='p-8 bg-non-photo-blue/10 border-non-photo-blue/30'>
-                  <div className='flex items-start gap-4'>
-                    <div className='w-16 h-16 bg-non-photo-blue rounded-full flex items-center justify-center flex-shrink-0'>
-                      <span className='text-white font-bold'>MS</span>
-                    </div>
-                    <div>
-                      <p className='text-lg italic text-english-violet mb-4'>
-                        "The business guidance was invaluable. My studio's
-                        revenue increased by 150% after implementing Shir's
-                        strategies."
-                      </p>
-                      <p className='font-semibold text-magenta-haze'>
-                        — Mark Studio Owner
-                      </p>
-                    </div>
-                  </div>
-                </Card>
-              </div>
-            </div>
+          {/* 3 — Pumpkin product (tall) */}
+          <article className='col-span-1 row-span-2 flex flex-col items-center justify-end overflow-hidden rounded-2xl bg-[#FEEEDE] p-4'>
+            <img
+              src={heroPortrait}
+              alt='Pumpkin poster'
+              className='w-full rounded-xl shadow transition-transform hover:scale-105'
+            />
+            <p className='mt-4 text-center text-sm font-medium text-gray-700'>
+              PUMPK <span className='font-light'>fruit poster</span>
+            </p>
+          </article>
 
-            {/* Right Column - 40% */}
-            <div className='lg:col-span-2 space-y-6'>
-              <h3 className='text-2xl font-semibold text-magenta-haze mb-6'>
-                Choose Your Path
-              </h3>
+          {/* 4 — Intro profile */}
+          <article className='flex flex-col gap-4 rounded-2xl bg-[#E6EBF7] p-6'>
+            <img
+              src={heroPortrait}
+              alt='Shir Adivi'
+              className='h-24 w-24 rounded-full object-cover shadow-lg'
+            />
+            <h3 className='text-lg font-bold'>I'm Shir Adivi,</h3>
+            <p className='text-sm leading-relaxed text-gray-700'>
+              a senior graphic designer
+              <br />
+              with over 10&nbsp;years of experience
+              <br />
+              building impactful brands.
+            </p>
+          </article>
 
-              {/* Tier Cards */}
-              <Card className='p-6 bg-moss-green/20 border-moss-green/30 hover:shadow-lg transition-shadow'>
-                <h4 className='text-lg font-bold text-magenta-haze mb-3'>
-                  Starter Tier
-                </h4>
-                <p className='text-english-violet mb-4'>
-                  Portfolio review and foundational guidance
-                </p>
-                <div className='text-2xl font-bold text-moonstone mb-2'>
-                  $297
-                </div>
-                <p className='text-sm text-english-violet/70'>
-                  One-time session
-                </p>
-              </Card>
+          {/* 5 — Orange brand */}
+          <article className='flex flex-col gap-2 rounded-2xl bg-[#0F2B46] p-4 text-white'>
+            <img
+              src={heroPortrait}
+              alt='Orange Juice'
+              className='rounded-xl shadow'
+            />
+            <h4 className='font-bold'>Jusce</h4>
+            <p className='text-sm'>
+              Juice brand identity
+              <br />
+              and packaging design
+            </p>
+          </article>
 
-              <Card className='p-6 bg-moss-green/30 border-moss-green/50 hover:shadow-lg transition-shadow'>
-                <h4 className='text-lg font-bold text-magenta-haze mb-3'>
-                  Pro Tier
-                </h4>
-                <p className='text-english-violet mb-4'>
-                  Portfolio + Strategy + Skill building
-                </p>
-                <div className='text-2xl font-bold text-moonstone mb-2'>
-                  $597
-                </div>
-                <p className='text-sm text-english-violet/70'>
-                  3-month program
-                </p>
-              </Card>
+          {/* 6 — Big mentoring card */}
+          <article className='col-span-2 row-span-2 flex flex-col justify-between rounded-2xl bg-white/80 p-8 shadow'>
+            <h2 className='text-2xl font-extrabold leading-snug text-gray-900 md:text-3xl'>
+              Refine your skills and grow your design career with personalized
+              mentoring&nbsp;for creatives.
+            </h2>
 
-              <Card className='p-6 bg-moss-green/40 border-moss-green/70 hover:shadow-lg transition-shadow'>
-                <h4 className='text-lg font-bold text-magenta-haze mb-3'>
-                  Master Tier
-                </h4>
-                <p className='text-english-violet mb-4'>
-                  All digital + personal coaching sessions
-                </p>
-                <div className='text-2xl font-bold text-moonstone mb-2'>
-                  $1,297
-                </div>
-                <p className='text-sm text-english-violet/70'>
-                  6-month intensive
-                </p>
-              </Card>
-            </div>
+            <ul className='mt-6 space-y-2 text-sm'>
+              <li>
+                <span className='font-semibold'>Starter Tier</span> – Monthly
+                coaching sessions
+              </li>
+              <li>
+                <span className='font-semibold'>Pro Tier</span> – Weekly
+                mentoring + priority support
+              </li>
+              <li>
+                <span className='font-semibold'>Master Tier</span> – All day
+                coaching intensive
+              </li>
+            </ul>
+          </article>
+
+          {/* 7 — Hand-written CTA */}
+          <div className='col-span-2 flex items-center justify-center rounded-2xl bg-transparent'>
+            <p className='font-handwritten text-4xl text-gray-800'>
+              Get in touch!
+            </p>
           </div>
         </div>
       </section>

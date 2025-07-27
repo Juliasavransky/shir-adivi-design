@@ -4,22 +4,19 @@ import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useTranslation } from 'react-i18next';
-import { useLanguage } from "@/stores/useLanguage";
-import LogoUrl from "@/assets/svg/F_logo.svg?url";
-
-
-
+import { useLanguage } from '@/stores/useLanguage';
+import LogoUrl from '@/assets/svg/F_logo.svg?url';
 
 /**
  * Navigation component – fully bilingual.
  * All visible strings come from i18n keys.
-*/
+ */
 export default function Navigation() {
   const { i18n, t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const { lang } = useLanguage()
+  const { lang } = useLanguage();
 
   // Change <html dir> when language changes
   useEffect(() => {
