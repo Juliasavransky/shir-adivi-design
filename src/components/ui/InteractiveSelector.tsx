@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/stores/useLanguage';
 import { Link, useLocation } from 'react-router-dom';
-import { FaCampground, FaFire, FaTint, FaHotTub } from 'react-icons/fa';
-
+import { FaPrint, FaFire, FaBullhorn, FaHotTub } from 'react-icons/fa';
 const InteractiveSelector = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animatedOptions, setAnimatedOptions] = useState([]);
@@ -17,7 +16,7 @@ const InteractiveSelector = () => {
       subcategory: 'Cozy glamping under the stars',
       image:
         'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
-      icon: <FaCampground size={24} className='text-white' />,
+      icon: <FaPrint size={24} className='text-white' />,
       gallery: ['/placeholder.svg', '/placeholder.svg'],
     },
     {
@@ -37,7 +36,7 @@ const InteractiveSelector = () => {
       subcategory: 'Private dock & canoe rides',
       image:
         'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
-      icon: <FaTint size={24} className='text-white' />,
+      icon: <FaBullhorn size={24} className='text-white' />,
       gallery: ['/placeholder.svg', '/placeholder.svg'],
     },
     {
