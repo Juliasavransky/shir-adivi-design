@@ -32,11 +32,11 @@ export default function Navigation() {
 
   // Navigation items defined once, translated on render
   const navItems = [
-    { key: 'nav.work', path: '/portfolio' },
-    { key: 'nav.mentoring', path: '/designer-mentoring' },
-    { key: 'nav.guidance', path: '/business-guidance' },
-    { key: 'nav.about', path: '/about' },
-    { key: 'nav.contact', path: '/contact' },
+    { key: 'work', path: '/portfolio' },
+    { key: 'mentoring', path: '/designer-mentoring' },
+    { key: 'guidance', path: '/business-guidance' },
+    { key: 'about', path: '/about' },
+    { key: 'contact', path: '/contact' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
