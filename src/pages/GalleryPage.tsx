@@ -4,9 +4,7 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import GradientMenu from "@/components/ui/gradient-menu";
 import { listByTag } from "@/lib/cloudinaryList";
 
-/* ------------------------------------------------------------------ */
 /* types */
-
 export interface GalleryPageProps {
   cat: "print" | "branding" | "marketing";
 }
