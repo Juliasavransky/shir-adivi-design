@@ -9,6 +9,12 @@ import testimonials from '@/assets/jsonLists/testimonials.json';
 
 import heroPortrait from '@/assets/images/Portrait.jpg';
 import bgUrl from '@/assets/svg/bg.svg';
+import lineOfBottles from '@/assets/images/line of bottles.jpg';
+import hacaremCatalog from '@/assets/images/hacarem-catalogue.jpg';
+import cafeCups1 from '@/assets/images/cafe-cups1.png';
+import cafeCups2 from '@/assets/images/cafe-cups2.png';
+import babySoft from '@/assets/images/baby-soft.jpg';
+import ilanitBrend from '@/assets/images/ilanit-branding.jpg';
 
 type Position = 'front' | 'middle' | 'back';
 
@@ -130,11 +136,13 @@ export const Home = () => {
           sm:grid-cols-2 md:grid-cols-4
         '
         >
-          {/* 1 — Purple title card */}
-          <article className='col-span-1 row-span-1 flex items-center justify-center rounded-2xl p-6 font-bold text-white bg-[#5C2D91]'>
-            PURPLE
-            <br />
-            SPACE
+          {/* 1 — bottles title card */}
+          <article className='col-span-2 row-span-1 flex items-center justify-center rounded-2xl p-4 font-bold text-white bg-[#5C2D91]'>
+            <img
+              src={lineOfBottles}
+              alt='Line of Bottles'
+              className='w-full rounded-xl shadow transition-transform hover:scale-105'
+            />
           </article>
 
           {/* 2 — Abstract shape */}
@@ -148,50 +156,37 @@ export const Home = () => {
 
           {/* 3 — Pumpkin product (tall) */}
           <article className='col-span-1 row-span-2 flex flex-col items-center justify-end overflow-hidden rounded-2xl bg-[#FEEEDE] p-4'>
-            <img
-              src={heroPortrait}
-              alt='Pumpkin poster'
-              className='w-full rounded-xl shadow transition-transform hover:scale-105'
-            />
-            <p className='mt-4 text-center text-sm font-medium text-gray-700'>
-              PUMPK <span className='font-light'>fruit poster</span>
-            </p>
-          </article>
-
-          {/* 4 — Intro profile */}
-          <article className='flex flex-col gap-4 rounded-2xl bg-[#E6EBF7] p-6'>
-            <img
-              src={heroPortrait}
-              alt='Shir Adivi'
-              className='h-24 w-24 rounded-full object-cover shadow-lg'
-            />
             <h3 className='text-lg font-bold'>I'm Shir Adivi,</h3>
-            <p className='text-sm leading-relaxed text-gray-700'>
+            <p className='text-sm leading-relaxed text-gray-700 mb-2'>
               a senior graphic designer
               <br />
               with over 10&nbsp;years of experience
+            </p>
+            <img
+              src={ilanitBrend}
+              alt='Pumpkin poster'
+              className='w-full rounded-xl shadow transition-transform hover:scale-105'
+            />
+
+
+            <h3 className='text-lg font-bold mt-12'>I'm Shir Adivi,</h3>
+            <p className='text-sm leading-relaxed text-gray-700 mb-2'>
+              a senior graphic designer
               <br />
               building impactful brands.
             </p>
-          </article>
-
-          {/* 5 — Orange brand */}
-          <article className='flex flex-col gap-2 rounded-2xl bg-[#0F2B46] p-4 text-white'>
             <img
-              src={heroPortrait}
-              alt='Orange Juice'
-              className='rounded-xl shadow'
+              src={babySoft}
+              alt='Pumpkin poster'
+              className='w-full rounded-xl shadow transition-transform hover:scale-105'
             />
-            <h4 className='font-bold'>Jusce</h4>
-            <p className='text-sm'>
-              Juice brand identity
-              <br />
-              and packaging design
+
+            <p className='mt-4 text-center text-sm font-medium text-gray-700'>
+              BABY-SOFT <span className='font-light'>Branding poster</span>
             </p>
           </article>
-
           {/* 6 — Big mentoring card */}
-          <article className='col-span-2 row-span-2 flex flex-col justify-between rounded-2xl bg-white/80 p-8 shadow'>
+          <article className='col-span-3 row-span-1 flex flex-col justify-between rounded-2xl bg-white/80 p-8 shadow'>
             <h2 className='text-2xl font-extrabold leading-snug text-gray-900 md:text-3xl'>
               Refine your skills and grow your design career with personalized
               mentoring&nbsp;for creatives.
@@ -211,6 +206,57 @@ export const Home = () => {
                 coaching intensive
               </li>
             </ul>
+          </article>
+
+          {/* 4 — Intro profile */}
+          <article className='flex flex-col gap-4 rounded-2xl bg-[#E6EBF7] p-6'>
+            <img
+              src={hacaremCatalog}
+              alt='Shir Adivi'
+              className='rounded-2xl object-cover shadow-lg'
+            />
+            <h3 className='text-lg font-bold'>Catalog Ha Carmel</h3>
+            <p className='text-sm leading-relaxed text-gray-700'>
+              a senior graphic designer
+              <br />
+              with over 10&nbsp; years of experience
+              <br />
+              building impactful brands.
+            </p>
+            <p className='text-sm leading-relaxed text-gray-700'>
+              a senior graphic designer
+              <br />
+              with over 10&nbsp; years of experience
+              <br />
+              building impactful brands.
+            </p>
+          </article>
+
+          {/* 5 — Orange brand */}
+          <article className='flex flex-col gap-2 rounded-2xl bg-[#0F2B46] p-4 text-white'>
+            <div className='bg-white/45  shadow-xl backdrop-blur-md  rounded-2xl '>
+              <img
+                src={cafeCups1}
+                alt='Orange Juice'
+                className='rounded-xl shadow '
+              />
+              <img
+                src={cafeCups2}
+                alt='Orange Juice'
+                className='rounded-xl shadow'
+              />
+              <img
+                src={cafeCups1}
+                alt='Orange Juice'
+                className='rounded-xl shadow'
+              />
+            </div>
+            <h4 className='font-bold'>Ilans Cafe Cups </h4>
+            <p className='text-sm'>
+              Juice brand identity
+              <br />
+              and packaging design
+            </p>
           </article>
 
           {/* 7 — Hand-written CTA */}
