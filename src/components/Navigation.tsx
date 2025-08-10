@@ -40,30 +40,74 @@ export default function Navigation() {
   ];
 
   const isActive = (path: string) => location.pathname === path;
+  const onTop = !scrolled;
 
+  // Routes whose page background is LIGHT (לבן/בהיר)
+  const LIGHT_BG_ROUTES = new Set<string>([
+    '/about',
+    '/contact',
+    '/portfolio',
+    '/designer-mentoring',
+    '/business-guidance',
+    // הוסיפי/הסירי לפי האתר שלך
+  ]);
+
+  const isLightBgRoute = LIGHT_BG_ROUTES.has(location.pathname);
+
+  // אם גוללים – הטקסט תמיד בהיר על הסגול; אם לא – ורוד על רקע לבן, לבן על רקע צבעוני
+  const navTextClass = scrolled
+    ? 'text-slate-100 hover:text-white'
+    : isLightBgRoute
+    ? 'text-razzmatazz hover:text-razzmatazz/80'
+    : 'text-white-smoke hover:text-moonstone';
+
+  const underlineClass = scrolled
+    ? 'bg-white/90'
+    : isLightBgRoute
+    ? 'bg-razzmatazz'
+    : 'bg-moonstone';
+
+  // שדרוג לאקטיב: צבע + גודל
+  const activeTextClass = scrolled
+    ? 'text-white'
+    : isLightBgRoute
+    ? 'text-razzmatazz'
+    : 'text-white';
+
+    // בסיס (לא-אקטיב) קטן יותר; אקטיב גדול יותר
+const baseSize = "text-lg md:text-xl";
+const activeSize = "text-xl md:text-2xl"; // בולט יותר
   return (
     <nav
       className={`fixed inset-x-0 top-0 z-50 h-[84px] transition-all duration-300 ${
         scrolled
-          ? 'bg-english-violet/90 backdrop-blur-md'
-          : 'bg-gradient-to-b from-magenta-haze/5 to-non-photo-blue/5 backdrop-blur-sm'
+          ? '  bg-english-violet/90 shadow-md backdrop-blur-md'
+          : 'bg-gradient-to-b from-magenta-haze/5 to-non-photo-blue/5 backdrop-blur-sm bg-transparent '
       }`}
     >
-      <div className='mx-auto h-full max-w-7xl px-4 sm:px-6 lg:px-8'>
-        <div className='flex h-full items-center justify-between'>
+      <div className='mx-auto h-full max-w-7xl px-4 sm:px-6 lg:px-8 '>
+        <div className='flex h-full items-center justify-between '>
           {/* Logo */}
           <Link
             to='/'
-            className={`text-2xl font-bold transition-all duration-300 ${
-              scrolled
-                ? 'scale-90 text-non-photo-blue'
-                : 'scale-100 text-primary'
-            }`}
+            aria-label='Home'
+            className={`text-2xl  font-bold transition-all duration-300 relative
+              ${
+                scrolled
+                  ? 'scale-90 text-non-photo-blue'
+                  : 'scale-100 text-primary'
+              }`}
           >
+            <span
+              className={`absolute inset-2 rounded-t-full rounded-b-full transition
+              ${onTop ? 'bg-white/40' : 'bg-white/40'}
+              backdrop-blur-md `}
+              aria-hidden
+            ></span>
             <img
               src={LogoUrl}
               alt='Shir Adivi Design Logo'
-              className='h-24 w-auto pt-4'
+              className='relative h-24 w-auto pt-4 '
             />
           </Link>
 
@@ -71,21 +115,35 @@ export default function Navigation() {
           <LanguageSwitcher />
 
           {/* Desktop nav */}
-          <div className='hidden space-x-8 md:flex rtl:space-x-reverse'>
-            {navItems.map(({ key, path }) => (
-              <Link
-                key={key}
-                to={path}
-                className={`group relative text-lg font-medium tracking-wide transition-all duration-300 hover:text-razzmatazz ${
-                  isActive(path) ? 'text-razzmatazz' : 'text-foreground'
-                }`}
-                style={{ letterSpacing: '0.5px' }}
-              >
-                {t(key)}
-                <span className='absolute -bottom-1 left-0 h-0.5 w-0 bg-razzmatazz transition-all duration-300 group-hover:w-full rtl:left-auto rtl:right-0'></span>
-              </Link>
-            ))}
-          </div>
+       <div className="hidden md:flex rtl:space-x-reverse space-x-8">
+  {navItems.map(({ key, path }) => {
+    const active = isActive(path);
+    return (
+      <Link
+        key={key}
+        to={path}
+        aria-current={active ? "page" : undefined}
+        className={[
+          "group relative tracking-wide transition-all duration-300",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-razzmatazz/60 rounded-sm",
+          active ? `${activeTextClass} ${activeSize} font-semibold`
+                 : `${navTextClass} ${baseSize}`
+        ].join(" ")}
+        style={{ letterSpacing: "0.5px" }}
+      >
+        {t(key)}
+        <span
+          className={[
+            "absolute -bottom-1 left-0 h-0.5 transition-all duration-300 rtl:left-auto rtl:right-0",
+            underlineClass,
+            active ? "w-full" : "w-0 group-hover:w-full"
+          ].join(" ")}
+        />
+      </Link>
+    );
+  })}
+</div>
+
 
           {/* Mobile toggle */}
           <div className='md:hidden'>

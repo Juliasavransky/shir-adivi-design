@@ -4,7 +4,6 @@ import { listByTag } from '@/lib/cloudinaryList';
 import { ImageComparisonSlider } from '@/components/ui/ImageComparison';
 import bgUrl from '@/assets/svg/bg.svg';
 
-
 interface Photo {
   url: string; // https://res.cloudinary.com/…/w_600/…
   alt: string; // כיתוב חופשי
@@ -30,19 +29,10 @@ export default function MockupPage() {
   return (
     <>
       <GradientMenu />
-      
-      <div
-        /* שכבת-רקע גלובלית */
-        className="min-h-screen w-full bg-fixed bg-cover bg-center"
-        style={{
-          backgroundImage: `url("data:image/svg+xml;utf8,${encodeURIComponent(
-            bgUrl
-          )}")`,
-        }}
-      >
 
+      <div>
         {photos.length >= 2 && (
-          <div className='w-full max-w-4xl mx-auto space-y-10'>
+          <div className='w-full max-w-4xl mx-auto space-y-10 mb-14 '>
             {/** עובר על המערך בקפיצות של 2 */}
             {photos.map(
               (_, i) =>

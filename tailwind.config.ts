@@ -25,6 +25,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        handwriting: ['"Nothing You Could Do"', 'cursive'],
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -62,6 +65,8 @@ export default {
         /* Shir's Brand Extensions - Complete Color Palette */
         'magenta-dye': 'hsl(var(--magenta-dye))',
         razzmatazz: 'hsl(var(--razzmatazz))',
+        'white-smoke': 'hsl(var(--white-smoke))',
+
         sage: 'hsl(var(--sage))',
         'moss-green': 'hsl(var(--moss-green))',
         'magenta-haze': 'hsl(var(--magenta-haze))',

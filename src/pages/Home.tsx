@@ -1,13 +1,35 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Phone } from 'lucide-react';
-import heroPortrait from '@/assets/images/Portrait.jpg';
 import { useLanguage } from '@/stores/useLanguage';
 import { BrandMarquee } from './../components/BrandMarquee';
+import TestimonialCard from '@/components/Testimonial';
+import testimonials from '@/assets/jsonLists/testimonials.json';
+
+import heroPortrait from '@/assets/images/Portrait.jpg';
 import bgUrl from '@/assets/svg/bg.svg';
+
+type Position = 'front' | 'middle' | 'back';
 
 export const Home = () => {
   const { lang } = useLanguage();
+  const [positions, setPositions] = useState<Position[]>([
+    'front',
+    'middle',
+    'back',
+  ]);
+  type Dir = 'next' | 'prev';
+
+  const handleShuffle = (dir: Dir) => {
+    setPositions((prev) => {
+      const p = [...prev];
+      return dir === 'next'
+        ? (p.unshift(p.pop()!), p) // שמאלה → קלף הבא
+        : (p.push(p.shift()!), p); // ימינה → קלף קודם
+    });
+  };
+
   return (
     <div className='min-h-screen pt-[84px]'>
       {/* רקע סטטי */}
@@ -104,7 +126,7 @@ export const Home = () => {
         <div
           className='
           mx-auto max-w-6xl
-          grid auto-rows-[1fr] gap-6
+          grid  gap-6
           sm:grid-cols-2 md:grid-cols-4
         '
         >
@@ -191,11 +213,45 @@ export const Home = () => {
             </ul>
           </article>
 
-          {/* 7 — Hand-written CTA */}
-          <div className='col-span-2 flex items-center justify-center rounded-2xl bg-transparent'>
-            <p className='font-handwritten text-4xl text-gray-800'>
+          {/* 7 — Hand-written CTA */}
+          <Link
+            to='/contact'
+            className='col-span-2 row-span-2 flex flex-col items-center justify-center'
+          >
+            <p className='font-handwriting text-6xl md:text-5xl text-magenta-dye whitespace-nowrap'>
               Get in touch!
             </p>
+
+            {/* SVG תקין ללא הערות - כיתבו בשורה אחת או השתמשו בשברים */}
+            <svg
+              viewBox='0 0 120 10'
+              fill='none'
+              stroke='currentColor'
+              strokeWidth='2'
+              className=' h-16 w-44 text-magenta-dye'
+              aria-hidden
+            >
+              {/* קו אופקי + חץ */}
+              <path
+                d='  M0 10                Q60 24 100 10         M92 2 L120 10 L92 18'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+              />
+            </svg>
+          </Link>
+        </div>
+
+        {/* 8 — testimonials card */}
+        <div className='grid place-content-center  px-8 py-24 text-slate-50 min-h-screen h-full w-full'>
+          <div className='relative -ml-[100px] h-[450px] w-[350px] md:-ml-[175px]'>
+            {testimonials.map((testimonial, index) => (
+              <TestimonialCard
+                key={testimonial.id}
+                {...testimonial}
+                handleShuffle={handleShuffle}
+                position={positions[index]}
+              />
+            ))}
           </div>
         </div>
       </section>
