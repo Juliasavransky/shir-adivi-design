@@ -49,7 +49,7 @@ export default function TestimonialCard({
       className={`
         absolute left-0 top-0 grid h-[450px] w-[350px] select-none
         place-content-center space-y-6 rounded-2xl 
-        bg-slate-800/20 p-6 shadow-xl backdrop-blur-md
+        bg-non-photo-blue/10 p-6 shadow-xl backdrop-blur-md
         ${isFront ? "cursor-grab active:cursor-grabbing" : ""}
       `}
       /* אנימציה חלקה ע״י transition */
@@ -72,7 +72,7 @@ export default function TestimonialCard({
         &ldquo;{testimonial}&rdquo;
       </span>
 
-      <span className="text-center text-sm font-medium text-indigo-800">
+      <span className="text-center text-sm font-medium text-english-violet">
         {author}
       </span>
     </div>

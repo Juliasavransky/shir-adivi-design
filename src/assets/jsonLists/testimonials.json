@@ -1,17 +1,29 @@
 [
-    {
-        "id": 1,
+   
+        {
+        "id": 4,
         "testimonial": "I feel like I've learned as much from X as I did completing my masters. It's the first thing I read every morning.",
         "author": "Jenn F. - Marketing Director @ Square"
     },
     {
-        "id": 2,
+        "id": 5,
         "testimonial": "My boss thinks I know what I'm doing. Honestly, I just read this newsletter.",
         "author": "Adrian Y. - Product Marketing @ Meta"
     },
     {
-        "id": 3,
+        "id": 6,
         "testimonial": "Can not believe this is free. If X was $5,000 a month, it would be worth every penny. I plan to name my next child after X.",
         "author": "Devin R. - Growth Marketing Lead @ OpenAI"
+    },
+    {
+        "id": 7,
+        "testimonial": "I love X. I read it every day. It has helped me become a better marketer.",
+        "author": "Sarah L. - Head of Marketing @ Stripe"
+    },
+    {
+        "id": 8,
+        "testimonial": "X is the best thing that has happened to my career. I can't recommend it enough.",
+        "author": "Michael T. - CEO @ Startup"
     }
+
 ]

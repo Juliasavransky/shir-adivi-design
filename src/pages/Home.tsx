@@ -234,7 +234,7 @@ export const Home = () => {
 
           {/* 5 — Orange brand */}
           <article className='flex flex-col gap-2 rounded-2xl bg-[#0F2B46] p-4 text-white'>
-            <div className='bg-white/45  shadow-xl backdrop-blur-md  rounded-2xl '>
+            <div className=' relative bg-non-photo-blue/70  shadow-xl backdrop-blur-md  rounded-2xl '>
               <img
                 src={cafeCups1}
                 alt='Orange Juice'
