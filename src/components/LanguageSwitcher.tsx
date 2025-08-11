@@ -15,6 +15,10 @@ export default function LanguageSwitcher() {
     "/about",
     "/contact",
     "/portfolio",
+    '/portfolio/branding',
+    '/portfolio/print',
+    '/portfolio/marketing',
+    '/portfolio/mockups',
     "/designer-mentoring",
     "/business-guidance",
   ]);
@@ -60,7 +64,7 @@ export default function LanguageSwitcher() {
     : "bg-white/10 text-white";
 
   return (
-    <div className="relative inline-block text-left">
+    <div className="absolute left-16 inline-block text-left">
       <button
         onClick={() => setOpen((p) => !p)}
         className={btnClass}

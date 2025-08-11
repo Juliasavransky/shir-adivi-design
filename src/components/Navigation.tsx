@@ -32,14 +32,20 @@ export default function Navigation() {
 
   // Navigation items defined once, translated on render
   const navItems = [
-    { key: 'work', path: '/portfolio' },
-    { key: 'mentoring', path: '/designer-mentoring' },
-    { key: 'guidance', path: '/business-guidance' },
-    { key: 'about', path: '/about' },
-    { key: 'contact', path: '/contact' },
+    { key: 'Work', path: '/portfolio' },
+    { key: 'Mentoring', path: '/designer-mentoring' },
+    { key: 'Guidance', path: '/business-guidance' },
+    { key: 'About', path: '/about' },
+    { key: 'Contact', path: '/contact' },
   ];
 
-  const isActive = (path: string) => location.pathname === path;
+const isActive = (path: string) => {
+  const cur = location.pathname;
+  if (path === "/portfolio") {
+    return cur === path || cur.startsWith(path + "/");
+  }
+  return cur === path;
+};
   const onTop = !scrolled;
 
   // Routes whose page background is LIGHT (לבן/בהיר)
@@ -47,6 +53,10 @@ export default function Navigation() {
     '/about',
     '/contact',
     '/portfolio',
+    '/portfolio/branding',
+    '/portfolio/print',
+    '/portfolio/marketing',
+    '/portfolio/mockups',
     '/designer-mentoring',
     '/business-guidance',
     // הוסיפי/הסירי לפי האתר שלך
