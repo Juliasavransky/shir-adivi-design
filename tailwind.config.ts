@@ -2,6 +2,14 @@ import type { Config } from 'tailwindcss';
 
 export default {
   safelist: [
+    'contrast-high',
+    'contrast-low',
+    'reduce-motion',
+    'underline-links',
+    'highlight-titles',
+    'cursor-big',
+    'font-dyslexic',
+    'dalton-colors',
     'rtl:text-right',
     'ltr:text-left',
     'rtl:space-x-reverse',
@@ -10,6 +18,7 @@ export default {
   ],
   darkMode: ['class'],
   content: [
+    './index.html',
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',

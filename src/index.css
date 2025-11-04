@@ -44,8 +44,17 @@ All colors MUST be HSL.
     --white-smoke: 0 0% 98%; /* #f8f8f8 */
 
     /* Gradients */
-    --gradient-hero: radial-gradient(ellipse at center, hsl(329 75% 45% / 0.1), hsl(92 20% 69% / 0.1), transparent);
-    --gradient-accent: linear-gradient(135deg, hsl(329 75% 45%), hsl(338 81% 55%));
+    --gradient-hero: radial-gradient(
+      ellipse at center,
+      hsl(329 75% 45% / 0.1),
+      hsl(92 20% 69% / 0.1),
+      transparent
+    );
+    --gradient-accent: linear-gradient(
+      135deg,
+      hsl(329 75% 45%),
+      hsl(338 81% 55%)
+    );
     --gradient-subtle: linear-gradient(180deg, hsl(92 20% 95%), hsl(0 0% 98%));
 
     --destructive: 0 84.2% 60.2%;
@@ -72,6 +81,8 @@ All colors MUST be HSL.
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+  
   }
 
   .dark {
@@ -121,5 +132,53 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
-}
+    .contrast-high {
+      background-color: #000 !important;
+      color: #fff !important;
+    }
 
+    .contrast-low {
+      background-color: #fefefe !important;
+      color: #111 !important;
+    }
+
+    .reduce-motion *,
+    .reduce-motion *::before,
+    .reduce-motion *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+
+    .underline-links a {
+      text-decoration: underline !important;
+    }
+
+    .highlight-titles h1,
+    .highlight-titles h2,
+    .highlight-titles h3 {
+      background-color: yellow;
+      color: black;
+    }
+
+    .cursor-big * {
+      cursor: url('https://cdn-icons-png.flaticon.com/128/109/109621.png') 4 4, auto !important;
+    }
+
+    .font-dyslexic body,
+    .font-dyslexic * {
+      font-family: 'OpenDyslexic', sans-serif !important;
+    }
+
+    .dalton-colors {
+      filter: url('#daltonize-filter');
+    }
+
+    .font-bold * {
+      font-weight: bold !important;
+    }
+
+    .spacing-wide * {
+      letter-spacing: 0.12em !important;
+      line-height: 1.8 !important;
+    }
+}
