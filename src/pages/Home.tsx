@@ -90,7 +90,7 @@ export const Home = () => {
                   className='border-moonstone text-moonstone hover:bg-moonstone hover:text-white rounded-full px-8'
                 >
                   <a
-                    href='https://wa.me/1234567890'
+                    href='https://wa.me/+972544809544'
                     target='_blank'
                     rel='noopener noreferrer'
                   >
@@ -138,11 +138,13 @@ export const Home = () => {
         >
           {/* 1 — bottles title card */}
           <article className='col-span-2 row-span-1 flex items-center justify-center rounded-2xl p-4 font-bold text-white bg-[#5C2D91]'>
-            <img
-              src={lineOfBottles}
-              alt='Line of Bottles'
-              className='w-full rounded-xl shadow transition-transform hover:scale-105'
-            />
+            <a href='/portfolio/marketing'>
+              <img
+                src={lineOfBottles}
+                alt='Line of Bottles'
+                className='w-full rounded-xl shadow transition-transform hover:scale-105'
+              />
+            </a>
           </article>
 
           {/* 2 — Abstract shape */}
@@ -156,18 +158,19 @@ export const Home = () => {
 
           {/* 3 — Pumpkin product (tall) */}
           <article className='col-span-1 row-span-2 flex flex-col items-center justify-end overflow-hidden rounded-2xl bg-[#FEEEDE] p-4'>
-            <h3 className='text-lg font-bold'>I'm Shir Adivi,</h3>
-            <p className='text-sm leading-relaxed text-gray-700 mb-2'>
-              a senior graphic designer
-              <br />
-              with over 10&nbsp;years of experience
-            </p>
-            <img
-              src={ilanitBrend}
-              alt='Pumpkin poster'
-              className='w-full rounded-xl shadow transition-transform hover:scale-105'
-            />
-
+            <a href='/portfolio/branding'>
+              <h3 className='text-lg font-bold'>I'm Shir Adivi,</h3>
+              <p className='text-sm leading-relaxed text-gray-700 mb-2'>
+                a senior graphic designer
+                <br />
+                with over 10&nbsp;years of experience
+              </p>
+              <img
+                src={ilanitBrend}
+                alt='Pumpkin poster'
+                className='w-full rounded-xl shadow transition-transform hover:scale-105'
+              />
+            </a>
 
             <h3 className='text-lg font-bold mt-12'>I'm Shir Adivi,</h3>
             <p className='text-sm leading-relaxed text-gray-700 mb-2'>
@@ -175,11 +178,13 @@ export const Home = () => {
               <br />
               building impactful brands.
             </p>
-            <img
-              src={babySoft}
-              alt='Pumpkin poster'
-              className='w-full rounded-xl shadow transition-transform hover:scale-105'
-            />
+            <a href='/portfolio/print'>
+              <img
+                src={babySoft}
+                alt='Pumpkin poster'
+                className='w-full rounded-xl shadow transition-transform hover:scale-105'
+              />
+            </a>
 
             <p className='mt-4 text-center text-sm font-medium text-gray-700'>
               BABY-SOFT <span className='font-light'>Branding poster</span>
@@ -187,76 +192,82 @@ export const Home = () => {
           </article>
           {/* 6 — Big mentoring card */}
           <article className='col-span-3 row-span-1 flex flex-col justify-between rounded-2xl bg-white/80 p-8 shadow'>
-            <h2 className='text-2xl font-extrabold leading-snug text-gray-900 md:text-3xl'>
-              Refine your skills and grow your design career with personalized
-              mentoring&nbsp;for creatives.
-            </h2>
+            <a href='/business-guidance'>
+              <h2 className='text-2xl font-extrabold leading-snug text-gray-900 md:text-3xl'>
+                Refine your skills and grow your design career with personalized
+                mentoring&nbsp;for creatives.
+              </h2>
 
-            <ul className='mt-6 space-y-2 text-sm'>
-              <li>
-                <span className='font-semibold'>Starter Tier</span> – Monthly
-                coaching sessions
-              </li>
-              <li>
-                <span className='font-semibold'>Pro Tier</span> – Weekly
-                mentoring + priority support
-              </li>
-              <li>
-                <span className='font-semibold'>Master Tier</span> – All day
-                coaching intensive
-              </li>
-            </ul>
+              <ul className='mt-6 space-y-2 text-sm'>
+                <li>
+                  <span className='font-semibold'>Starter Tier</span> – Monthly
+                  coaching sessions
+                </li>
+                <li>
+                  <span className='font-semibold'>Pro Tier</span> – Weekly
+                  mentoring + priority support
+                </li>
+                <li>
+                  <span className='font-semibold'>Master Tier</span> – All day
+                  coaching intensive
+                </li>
+              </ul>
+            </a>
           </article>
 
           {/* 4 — Intro profile */}
           <article className='flex flex-col gap-4 rounded-2xl bg-[#E6EBF7] p-6'>
-            <img
-              src={hacaremCatalog}
-              alt='Shir Adivi'
-              className='rounded-2xl object-cover shadow-lg'
-            />
-            <h3 className='text-lg font-bold'>Catalog Ha Carmel</h3>
-            <p className='text-sm leading-relaxed text-gray-700'>
-              a senior graphic designer
-              <br />
-              with over 10&nbsp; years of experience
-              <br />
-              building impactful brands.
-            </p>
-            <p className='text-sm leading-relaxed text-gray-700'>
-              a senior graphic designer
-              <br />
-              with over 10&nbsp; years of experience
-              <br />
-              building impactful brands.
-            </p>
+            <a href='/portfolio/branding'>
+              <img
+                src={hacaremCatalog}
+                alt='Shir Adivi'
+                className='rounded-2xl object-cover shadow-lg'
+              />
+              <h3 className='text-lg font-bold'>Catalog Ha Carmel</h3>
+              <p className='text-sm leading-relaxed text-gray-700'>
+                a senior graphic designer
+                <br />
+                with over 10&nbsp; years of experience
+                <br />
+                building impactful brands.
+              </p>
+              <p className='text-sm leading-relaxed text-gray-700'>
+                a senior graphic designer
+                <br />
+                with over 10&nbsp; years of experience
+                <br />
+                building impactful brands.
+              </p>
+            </a>
           </article>
 
           {/* 5 — Orange brand */}
           <article className='flex flex-col gap-2 rounded-2xl bg-[#0F2B46] p-4 text-white'>
-            <div className=' relative bg-non-photo-blue/70  shadow-xl backdrop-blur-md  rounded-2xl '>
-              <img
-                src={cafeCups1}
-                alt='Orange Juice'
-                className='rounded-xl shadow '
-              />
-              <img
-                src={cafeCups2}
-                alt='Orange Juice'
-                className='rounded-xl shadow'
-              />
-              <img
-                src={cafeCups1}
-                alt='Orange Juice'
-                className='rounded-xl shadow'
-              />
-            </div>
-            <h4 className='font-bold'>Ilans Cafe Cups </h4>
-            <p className='text-sm'>
-              Juice brand identity
-              <br />
-              and packaging design
-            </p>
+            <a href='/portfolio/print'>
+              <div className=' relative bg-non-photo-blue/70  shadow-xl backdrop-blur-md  rounded-2xl '>
+                <img
+                  src={cafeCups1}
+                  alt='Orange Juice'
+                  className='rounded-xl shadow '
+                />
+                <img
+                  src={cafeCups2}
+                  alt='Orange Juice'
+                  className='rounded-xl shadow'
+                />
+                <img
+                  src={cafeCups1}
+                  alt='Orange Juice'
+                  className='rounded-xl shadow'
+                />
+              </div>
+              <h4 className='font-bold'>Ilans Cafe Cups </h4>
+              <p className='text-sm'>
+                Juice brand identity
+                <br />
+                and packaging design
+              </p>
+            </a>
           </article>
 
           {/* 7 — Hand-written CTA */}
@@ -302,10 +313,7 @@ export const Home = () => {
         </div>
       </section>
 
-      {/* Moving Blob Easter Egg */}
-      <div className='absolute bottom-4 left-4 w-8 h-8 bg-sage/60 rounded-full text-3xl animate-bounce text-center rotate-45'>
-        &#x279C;
-      </div>
+  
     </div>
   );
 };

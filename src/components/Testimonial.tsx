@@ -48,7 +48,7 @@ export default function TestimonialCard({
     <div
       className={`
         absolute left-0 top-0 grid h-[450px] w-[350px] select-none
-        place-content-center space-y-6 rounded-2xl 
+        place-content-center space-y-6 rounded-2xl cursor-grab
         bg-non-photo-blue/10 p-6 shadow-xl backdrop-blur-md
         ${isFront ? "cursor-grab active:cursor-grabbing" : ""}
       `}

@@ -32,7 +32,7 @@ export default function Navigation() {
 
   // Navigation items defined once, translated on render
   const navItems = [
-    { key: 'Work', path: '/portfolio' },
+    { key: 'Portfolio', path: '/portfolio' },
     { key: 'Mentoring', path: '/designer-mentoring' },
     { key: 'Guidance', path: '/business-guidance' },
     { key: 'About', path: '/about' },

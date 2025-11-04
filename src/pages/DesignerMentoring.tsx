@@ -7,7 +7,9 @@ export const DesignerMentoring = () => {
   const { lang } = useLanguage();
   return (
     <div className='relative min-h-screen py-20'>
-      <div className='absolute bg-local top-1/2 left--2/3 bg-no-repeat inset-0  bg-[url("/src/assets/images/comingSoonS.png")] ' />
+
+      <div className='absolute bg-local top-[52%] left--2/3 bg-no-repeat inset-0  
+      bg-[url("/src/assets/images/comingSoonS.png")] ' />
 
       <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center'>
         <Card className='p-12 bg-gradient-to-r from-accent/5 to-secondary/5 border-none'>
@@ -31,7 +33,7 @@ export const DesignerMentoring = () => {
               feedback.
             </p>
 
-            <Button asChild variant="outline" size="lg" className="shadow-lg mt-4">
+            <Button asChild variant="outline" size="lg" className="shadow-lg mt-4 cursor-pointer ">
               <Link to="/contact">
                 Sign in to Get Notified When Available
               </Link>
