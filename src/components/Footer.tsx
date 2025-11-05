@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/stores/useLanguage';
 import webWitchLogoUrl from '@/assets/svg/webWitchLogo yellow.svg';
+import { PopUp } from '../components/PopUp';
+import { useState } from 'react';
 
 export const Footer = () => {
   const { lang } = useLanguage();
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <footer className='bg-english-violet text-white py-12'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
@@ -61,6 +65,17 @@ export const Footer = () => {
               <p>Graphic Design Studio</p>
               <p>Brand Identity & Marketing</p>
               <p>Available for new projects</p>
+              <button
+                className='block hover:text-white cursor-pointer text-right'
+                onClick={() => setIsOpen(true)}
+              >
+                Privacy Policy
+              </button>
+              <PopUp
+                open={isOpen}
+                onOpenChange={setIsOpen}
+                contentType='policy'
+              />
             </div>
           </div>
         </div>
@@ -75,7 +90,7 @@ export const Footer = () => {
             rel='noopener noreferrer'
             className='hover:text-white flex items-center justify-center '
           >
-            Designed and developed by 
+            Designed and developed by
             <img
               src={webWitchLogoUrl}
               alt='Web_Witch Design Logo'

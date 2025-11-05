@@ -17,11 +17,14 @@ import {
 } from 'lucide-react';
 import { useLanguage } from '@/stores/useLanguage';
 import { Link } from 'react-router-dom';
+import { Checkbox } from '@/components/ui/checkbox';
+import { PopUp } from '@/components/PopUp';
 
 export const Contact = () => {
   const { lang } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -89,6 +92,20 @@ export const Contact = () => {
                   rows={6}
                   placeholder='Tell me about your project...'
                   required
+                />
+              </div>
+              <div className='flex items-center space-x-2'> *bla bla bla
+                <Checkbox required />
+                <button
+                  className='block hover:text-primary cursor-pointer text-right'
+                  onClick={() => setIsOpen(true)}
+                >
+                  Privacy Policy
+                </button>
+                <PopUp
+                  open={isOpen}
+                  onOpenChange={setIsOpen}
+                  contentType='policy'
                 />
               </div>
 
