@@ -4,121 +4,103 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import GradientMenu from "@/components/ui/gradient-menu";
 import { listByTag } from "@/lib/cloudinaryList";
 
-/* types */
 export interface GalleryPageProps {
   cat: "print" | "branding" | "marketing";
 }
 
 interface Photo {
-  url: string;          // https://res.cloudinary.com/…/w_600/…
-  alt: string;          // כיתוב חופשי
+  url: string;
+  alt: string;
 }
 
-/* ------------------------------------------------------------------ */
-/* component */
-
 export default function GalleryPage({ cat }: GalleryPageProps) {
-  /* 1️⃣  –  Cloudinary fetch  */
   const { data: photos = [], isLoading } = useQuery<Photo[]>({
     queryKey: ["gallery", cat],
     queryFn: () => listByTag(cat),
-    staleTime: 1_000 * 60 * 60,          // שעה   (מונע בקשות מיותרות)
+    staleTime: 1_000 * 60 * 60,
   });
 
-  /* 2️⃣  –  Light-box state (null = סגור) */
   const [current, setCurrent] = useState<number | null>(null);
   const total = photos.length;
 
-  /* 3️⃣  –  control helpers  */
-  const close     = useCallback(() => setCurrent(null), []);
-  const next      = useCallback(() => setCurrent(i => (i! + 1) % total), [total]);
-  const previous  = useCallback(() => setCurrent(i => (i! - 1 + total) % total), [total]);
+  const close = useCallback(() => setCurrent(null), []);
+  const next = useCallback(() => setCurrent(i => (i! + 1) % total), [total]);
+  const previous = useCallback(() => setCurrent(i => (i! - 1 + total) % total), [total]);
 
-  /* 4️⃣  –  keyboard navigation  (Arrow ← / → / Esc) */
   useEffect(() => {
     if (current === null) return;
 
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape")     close();
+      if (e.key === "Escape") close();
       if (e.key === "ArrowRight") next();
-      if (e.key === "ArrowLeft")  previous();
+      if (e.key === "ArrowLeft") previous();
     };
 
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [current, close, next, previous]);
 
-  /* 5️⃣  –  loading state */
   if (isLoading) {
     return <p className="p-8">Loading…</p>;
   }
 
-  /* 6️⃣  –  render */
   return (
     <>
-      {/* תפריט קטגוריות קבוע בראש העמוד */}
       <GradientMenu />
 
-      {/* Masonry columns – Tailwind columns utilities */}
-      <section className="columns-2 gap-4 p-4 sm:columns-3 lg:columns-4">
+      <section className="columns-1 sm:columns-2 md:columns-3 xl:columns-4 gap-4 p-4">
         {photos.map((p, i) => (
           <img
-            key={p.url}                        /* מפתח יציב */
-            src={p.url}                        /* w_600 (קל למשיכה) */
+            key={p.url}
+            src={p.url}
             alt={p.alt}
             loading="lazy"
             className="mb-4 w-full cursor-pointer rounded-xl shadow transition hover:scale-[1.02]"
-            onClick={() => setCurrent(i)}      /* פותח Light-box */
+            onClick={() => setCurrent(i)}
           />
         ))}
       </section>
 
-      {/* Light-box (נפתח רק כאשר current ≠ null)                   */}
       {current !== null && (
         <>
-          {/* Overlay */}
           <div
             onClick={close}
-            className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm "
+            className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm"
           />
 
-          {/* Image + controls */}
-          <figure className="fixed inset-0 z-50 flex items-center justify-center select-none p-6">
-            {/* תמונה גדולה יותר – w_800 */}
+          <figure className="fixed inset-0 z-50 flex items-center justify-center select-none p-4 sm:p-6">
             <img
               src={photos[current].url.replace("/w_600", "/w_800")}
               alt={photos[current].alt}
-              className="max-h-[90vh] rounded-xl shadow-2xl"
+              className="max-h-[90vh] max-w-[90vw] rounded-xl shadow-2xl"
             />
 
-            {/* Caption */}
-            <figcaption className="absolute bottom-8 px-6 text-lg font-medium text-white">
+            <figcaption className="absolute bottom-6 sm:bottom-8 px-4 sm:px-6 text-base sm:text-lg font-medium text-white text-center w-full">
               {photos[current].alt}
             </figcaption>
 
-            {/* Close */}
             <button
               aria-label="Close"
               onClick={close}
-              className="absolute top-6 right-6 text-white/90 hover:text-white"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/90 hover:text-white"
             >
-              <X size={34} />
+              <X size={30} className="sm:size-8" />
             </button>
 
-            {/* Prev / Next */}
             <button
               aria-label="Previous"
               onClick={previous}
-              className="absolute left-4 sm:left-10 text-white/70 hover:text-white"
+              className="absolute left-3 sm:left-6 text-white/70 hover:text-white"
             >
-              <ChevronLeft size={48} />
+              <ChevronLeft size={40} className="sm:size-12" />
             </button>
+
             <button
               aria-label="Next"
               onClick={next}
-              className="absolute right-24 sm:right-10 text-white/70 hover:text-white"
+              className="absolute right-3 sm:right-6 text-white/70 hover:text-white"
             >
-              <ChevronRight size={48} />
+              <ChevronRight size={40} className="sm:size-12" />
             </button>
           </figure>
         </>

@@ -30,7 +30,6 @@ export const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     toast({
@@ -44,22 +43,21 @@ export const Contact = () => {
 
   return (
     <div className='min-h-screen py-20'>
-      <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
+      <div className='max-w-5xl mx-auto px-4 sm:px-6 lg:px-8'>
         {/* Header */}
         <div className='text-center mb-16'>
-          <h1 className='text-5xl md:text-6xl font-bold mb-6'>
+          <h1 className='text-4xl sm:text-5xl md:text-6xl font-bold mb-6'>
             Let's Work Together
           </h1>
-          <p className='text-xl text-muted-foreground max-w-2xl mx-auto'>
-            Ready to bring your vision to life? I'd love to hear about your
-            project and explore how we can create something amazing together.
+          <p className='text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto'>
+            Ready to bring your vision to life? I'd love to hear about your project and explore how we can create something amazing together.
           </p>
         </div>
 
-        <div className='grid grid-cols-3 lg:grid-cols-2 gap-8'>
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
           {/* Contact Form */}
-          <Card className='p-8 grid-cols-2  lg:grid-cols-2'>
-            <h2 className='text-3xl font-handwriting font-semibold mb-6'>
+          <Card className='p-6 sm:p-8'>
+            <h2 className='text-2xl sm:text-3xl font-handwriting font-semibold mb-6'>
               Drop me a line
             </h2>
             <form onSubmit={handleSubmit} className='space-y-6'>
@@ -94,13 +92,15 @@ export const Contact = () => {
                   required
                 />
               </div>
-              <div className='flex items-center space-x-2'> *bla bla bla
+
+              <div className='flex flex-wrap items-center gap-2'>
                 <Checkbox required />
                 <button
-                  className='block hover:text-primary cursor-pointer text-right'
+                  type='button'
+                  className='hover:text-primary underline text-sm'
                   onClick={() => setIsOpen(true)}
                 >
-                  Privacy Policy
+                  I accept the Privacy Policy
                 </button>
                 <PopUp
                   open={isOpen}
@@ -121,8 +121,7 @@ export const Contact = () => {
                   aria-describedby='fileHelp'
                 />
                 <p className='text-sm text-muted-foreground mt-1'>
-                  You can attach reference materials, briefs, or inspiration
-                  files.
+                  You can attach reference materials, briefs, or inspiration files.
                 </p>
               </div>
 
@@ -138,9 +137,9 @@ export const Contact = () => {
           </Card>
 
           {/* Contact Information */}
-          <div className='space-y-8 grid-cols-2 lg:grid-cols-2'>
+          <div className='space-y-8'>
             <Card className='p-6'>
-              <h3 className='text-2xl font-handwriting text-center font-semibold mb-4'>
+              <h3 className='text-xl sm:text-2xl font-handwriting text-center font-semibold mb-4'>
                 Contact Information
               </h3>
               <div className='space-y-4 flex flex-col items-center text-center'>
@@ -160,57 +159,31 @@ export const Contact = () => {
             </Card>
 
             <Card className='p-6'>
-              <div className='text-center '>
-                <h3 className='text-2xl font-handwriting font-semibold mb-4'>
-                  Feel free to reach out{' '}
+              <div className='text-center'>
+                <h3 className='text-xl sm:text-2xl font-handwriting font-semibold mb-4'>
+                  Feel free to reach out
                 </h3>
-
-                <div className='flex items-center justify-around mt-4'>
-                  <Link
-                    to='https://www.instagram.com/shiradivi'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                  >
-                    <Instagram className='h-8 w-8 text-primary inline-block mr-2 cursor-pointer' />
+                <div className='flex flex-wrap justify-center gap-4 mt-4'>
+                  <Link to='https://www.instagram.com/shiradivi' target='_blank' rel='noopener noreferrer'>
+                    <Instagram className='h-6 w-6 sm:h-8 sm:w-8 text-primary' />
                   </Link>
-                  <Link
-                    to='https://t.me/shiradivi'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='text-primary hover:underline'
-                  >
-                    <Youtube className='h-8 w-8 text-primary inline-block mr-2 cursor-pointer' />
+                  <Link to='https://t.me/shiradivi' target='_blank' rel='noopener noreferrer'>
+                    <Youtube className='h-6 w-6 sm:h-8 sm:w-8 text-primary' />
                   </Link>
-                  <Link
-                    to='https://instagram.com'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='text-primary hover:underline'
-                  >
-                    <Facebook className='h-8 w-8 text-primary inline-block mr-2 cursor-pointer' />
+                  <Link to='https://instagram.com' target='_blank' rel='noopener noreferrer'>
+                    <Facebook className='h-6 w-6 sm:h-8 sm:w-8 text-primary' />
                   </Link>
-                  <Link
-                    to='https://facebook.com/'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='text-primary hover:underline'
-                  >
-                    <Linkedin className='h-8 w-8 text-primary inline-block mr-2 cursor-pointer' />
+                  <Link to='https://facebook.com/' target='_blank' rel='noopener noreferrer'>
+                    <Linkedin className='h-6 w-6 sm:h-8 sm:w-8 text-primary' />
                   </Link>
-                  <Link
-                    to='https://linkedin.com/in'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='text-primary hover:underline'
-                  >
-                    <MessageCircleMore className='h-8 w-8 text-primary inline-block mr-2 cursor-pointer' />
+                  <Link to='https://linkedin.com/in' target='_blank' rel='noopener noreferrer'>
+                    <MessageCircleMore className='h-6 w-6 sm:h-8 sm:w-8 text-primary' />
                   </Link>
                 </div>
+                <p className='text-muted-foreground mt-4 text-sm'>
+                  For immediate questions or project discussions, reach out via WhatsApp.
+                </p>
               </div>
-              <p className='text-muted-foreground mb-4 text-center text-normalized pt-4'>
-                For immediate questions or project discussions, reach out via
-                WhatsApp.
-              </p>
             </Card>
           </div>
         </div>

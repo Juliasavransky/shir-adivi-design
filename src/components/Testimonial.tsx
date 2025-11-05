@@ -1,14 +1,13 @@
-/*  src/components/TestimonialCard.tsx  */
 import { useRef } from "react";
 
 type Position = "front" | "middle" | "back";
 
 interface TestimonialCardProps {
-  handleShuffle: (dir: "next" | "prev") => void;   // ⬅️
+  handleShuffle: (dir: "next" | "prev") => void;
   testimonial: string;
   author: string;
-  id: number;           // לצורך יצירת Avatar דמו  
-  position: Position;   // "front" | "middle" | "back"
+  id: number;
+  position: Position;
 }
 
 export default function TestimonialCard({
@@ -18,45 +17,41 @@ export default function TestimonialCard({
   id,
   position,
 }: TestimonialCardProps) {
-  /* נעקוב אחרי מיקום האצבע / העכבר כדי לדעת אם נגררה שמאלה מספיק */
   const dragStartX = useRef<number>(0);
-
-  /* כרטיס קדמי בלבד ניתן לגרירה */
   const isFront = position === "front";
 
-  /* טרנספורמציות ל-*layout* */
   const rotate =
     position === "front" ? "-6deg" : position === "middle" ? "0deg" : "6deg";
   const translateX =
     position === "front" ? "0%" : position === "middle" ? "33%" : "66%";
   const z = position === "front" ? 2 : position === "middle" ? 1 : 0;
 
-  /* events */
   const onDragStart = (e: React.DragEvent<HTMLDivElement>) => {
     dragStartX.current = e.clientX;
   };
 
- const onDragEnd = (e: React.DragEvent<HTMLDivElement>) => {
-  const delta = dragStartX.current - e.clientX;      // + = שמאלה
-  if (Math.abs(delta) > 150) {
-    handleShuffle(delta > 0 ? "next" : "prev");      // ⬅️ כיוון
-  }
-  dragStartX.current = 0;
-};
+  const onDragEnd = (e: React.DragEvent<HTMLDivElement>) => {
+    const delta = dragStartX.current - e.clientX;
+    if (Math.abs(delta) > 150) {
+      handleShuffle(delta > 0 ? "next" : "prev");
+    }
+    dragStartX.current = 0;
+  };
 
   return (
     <div
+      role="listitem"
       className={`
-        absolute left-0 top-0 grid h-[450px] w-[350px] select-none
-        place-content-center space-y-6 rounded-2xl cursor-grab
-        bg-non-photo-blue/10 p-6 shadow-xl backdrop-blur-md
-        ${isFront ? "cursor-grab active:cursor-grabbing" : ""}
+        absolute left-0 top-0 grid select-none place-content-center
+        space-y-6 rounded-2xl p-6 shadow-xl backdrop-blur-md transition-transform
+        ${isFront ? "cursor-grab active:cursor-grabbing" : "cursor-default"}
       `}
-      /* אנימציה חלקה ע״י transition */
       style={{
         zIndex: z,
         transform: `translateX(${translateX}) rotate(${rotate})`,
-        transition: "transform 0.35s ease",
+        height: "100%",
+        maxWidth: "350px",
+        width: "90vw",
       }}
       draggable={isFront}
       onDragStart={onDragStart}
@@ -65,10 +60,10 @@ export default function TestimonialCard({
       <img
         src={`https://i.pravatar.cc/128?img=${id}`}
         alt={`Avatar of ${author}`}
-        className="pointer-events-none mx-auto h-32 w-32 rounded-full  bg-slate-200 object-cover"
+        className="pointer-events-none mx-auto h-24 w-24 sm:h-32 sm:w-32 rounded-full bg-slate-200 object-cover"
       />
 
-      <span className="text-center text-lg italic text-slate-900">
+      <span className="text-center text-base sm:text-lg italic text-slate-900">
         &ldquo;{testimonial}&rdquo;
       </span>
 
