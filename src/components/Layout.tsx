@@ -13,9 +13,9 @@ export const Layout = () => {
       <main>
         <Outlet />
       </main>
-      <Footer />
       <AccessibilityWidget />
       <WhatsAppButton />
+      <Footer />
     </div>
   );
 };
